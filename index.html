@@ -78,7 +78,7 @@
 
     <script>
         function openAndroidApp() {
-            // Replace 'https://www.karamzero.github.io.com/details' with the actual custom URI scheme of the Android app
+            // Replace 'yourapp' with the actual custom URI scheme of the Android app
             const customUriScheme = 'https://www.karamzero.github.io.com/details';
 
             // Get the value from the input field or set it to 1 if empty
@@ -96,17 +96,12 @@
             // Construct the intent URI with extra data
             const intentURI = `intent://${customUriScheme}/#Intent;${params};end`;
 
-            // Show the full intent text for 10 seconds
+            // Attempt to open the app
+            window.location.href = intentURI;
+
+            // Notify the user
             const notificationElement = document.getElementById('notification');
-            notificationElement.textContent = `Intent: ${intentURI}`;
-            
-            // After 10 seconds, attempt to open the app
-            setTimeout(() => {
-                // Attempt to open the app
-                window.location.href = intentURI;
-                // Notify the user
-                notificationElement.textContent = "Checking if the app can handle the intent...";
-            }, 10000); // 10000 milliseconds = 10 seconds
+            notificationElement.textContent = "Checking if the app can handle the intent...";
         }
     </script>
 
