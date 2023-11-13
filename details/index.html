@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Feature Access</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        :: App Feature Access ::
+    </header>
+
+    <h1>This Feature Requires the Mobile App</h1>
+
+    <p>To access this feature, please download and install our mobile app.</p>
+
+    <!-- Button linking to the app download page -->
+    <button onclick="redirectToAppDownload()">Download the App</button>
+
+    <script>
+        function redirectToAppDownload() {
+            // Replace 'yourapp-download-url' with the actual URL for app download
+            const appDownloadUrl = 'https://play.google.com/store/apps?hl=en&gl=US';
+
+            // Redirect the user to the app download page
+            window.location.href = appDownloadUrl;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
