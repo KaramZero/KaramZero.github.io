@@ -59,7 +59,7 @@
 <body>
 
     <header>
-        :: Karam Test App ::
+        ::: Karam Test App :::
     </header>
 
     <h1>Welcome to the App Opener!</h1>
@@ -78,13 +78,13 @@
 
     <script>
         function openAndroidApp() {
-            // Replace 'yourapp' with the actual custom URI scheme of the Android app
-            const customUriScheme = 'https://www.karamzero.github.io.com/details';
+            // Replace 'https://karamzero.github.io/details' with the actual URL you want to open
+            const urlToOpen = 'https://karamzero.github.io/details';
 
             // Get the value from the input field or set it to 1 if empty
             const recipeId = document.getElementById('recipeIdInput').value || '1';
 
-            // Extra data to be passed in the URI
+            // Extra data to be passed in the URL
             const extraData = {
                 recipeId: recipeId
                 // Add more key-value pairs as needed
@@ -93,15 +93,15 @@
             // Convert extraData to a URL-encoded string
             const params = new URLSearchParams(extraData).toString();
 
-            // Construct the intent URI with extra data
-            const intentURI = `intent://${customUriScheme}/#Intent;${params};end`;
+            // Construct the URL with extra data
+            const urlWithParams = `${urlToOpen}?${params}`;
 
-            // Attempt to open the app
-            window.location.href = intentURI;
+            // Attempt to open the URL
+            window.location.href = urlWithParams;
 
             // Notify the user
             const notificationElement = document.getElementById('notification');
-            notificationElement.textContent = "Checking if the app can handle the intent...";
+            notificationElement.textContent = "Checking if the app can handle the URL...";
         }
     </script>
 
