@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karam Test App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     <style>
         body {
             background-color: #f0f0f0;
@@ -13,34 +14,37 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
         }
 
         header {
-            background-color: #4CAF50;
+            background-color: #45a049;
             color: #fff;
             padding: 15px;
             font-size: 24px;
         }
 
         h1 {
-            color: #4CAF50;
+            color: #45a049;
         }
 
         p {
             font-size: 18px;
+            color: #333;
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #45a049;
             color: #fff;
             padding: 10px 20px;
             font-size: 16px;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #4CAF50;
         }
 
         input {
@@ -52,7 +56,7 @@
         #notification {
             font-size: 16px;
             margin-top: 10px;
-            color: #4CAF50;
+            color: #45a049;
         }
     </style>
 </head>
@@ -62,7 +66,7 @@
         Karam Test App
     </header>
 
-    <h1>Welcome to the App Opener!</h1>
+    <h1><i class="fas fa-utensils"></i> Welcome to the App Opener! <i class="fas fa-utensils"></i></h1>
 
     <p>Enter Recipe ID:</p>
     <!-- Input field for the recipeId -->
@@ -71,14 +75,14 @@
     <p>Click the button below to open the Android app with extra data:</p>
 
     <!-- Button to open Android app with extra data -->
-    <button onclick="openAndroidApp()">Open Android App</button>
+    <button onclick="openAndroidApp()"><i class="fas fa-utensils"></i> Open Android App <i class="fas fa-utensils"></i></button>
 
     <!-- Notification message -->
     <p id="notification"></p>
 
     <script>
         function openAndroidApp() {
-            // Replace 'yourapp' with the actual custom URI scheme of the Android app
+            // Replace 'https://www.karamzero.github.io.com/details' with the actual custom URI scheme of the Android app
             const customUriScheme = 'https://www.karamzero.github.io.com/details';
 
             // Get the value from the input field or set it to 1 if empty
