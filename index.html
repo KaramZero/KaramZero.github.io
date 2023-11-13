@@ -48,6 +48,12 @@
             margin: 10px;
             font-size: 16px;
         }
+
+        #notification {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
@@ -66,6 +72,9 @@
 
     <!-- Button to open Android app with extra data -->
     <button onclick="openAndroidApp()">Open Android App</button>
+
+    <!-- Notification message -->
+    <p id="notification"></p>
 
     <script>
         function openAndroidApp() {
@@ -89,6 +98,10 @@
 
             // Attempt to open the app
             window.location.href = intentURI;
+
+            // Notify the user
+            const notificationElement = document.getElementById('notification');
+            notificationElement.textContent = "Checking if the app can handle the intent...";
         }
     </script>
 
