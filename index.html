@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karam Test App</title>
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <style>
         body {
             background-color: #f0f0f0;
@@ -59,7 +63,7 @@
 <body>
 
     <header>
-        :: Karam Test App ::
+        ::: Karam Test App :::
     </header>
 
     <h1>Welcome to the App Opener!</h1>
@@ -75,6 +79,9 @@
 
     <!-- Notification message -->
     <p id="notification"></p>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
         function openAndroidApp() {
@@ -102,6 +109,14 @@
             // Notify the user
             const notificationElement = document.getElementById('notification');
             notificationElement.textContent = "Checking if the app can handle the intent...";
+
+            // Show a Snackbar message for 10 seconds
+            showSnackbar("Intent sent. Checking for app response...", 10000);
+        }
+
+        function showSnackbar(message, duration) {
+            // Using Materialize CSS Snackbar
+            M.toast({ html: message, displayLength: duration });
         }
     </script>
 
