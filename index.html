@@ -42,6 +42,12 @@
         button:hover {
             background-color: #45a049;
         }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +57,10 @@
     </header>
 
     <h1>Welcome to the App Opener!</h1>
+
+    <p>Enter Recipe ID:</p>
+    <!-- Input field for the recipeId -->
+    <input type="number" id="recipeIdInput" placeholder="Recipe ID" min="1">
 
     <p>Click the button below to open the Android app with extra data:</p>
 
@@ -62,9 +72,12 @@
             // Replace 'yourapp' with the actual custom URI scheme of the Android app
             const customUriScheme = 'https://www.karamzero.github.io.com/details';
 
+            // Get the value from the input field or set it to 1 if empty
+            const recipeId = document.getElementById('recipeIdInput').value || '1';
+
             // Extra data to be passed in the URI
             const extraData = {
-                recipeId: '12'
+                recipeId: recipeId
                 // Add more key-value pairs as needed
             };
 
