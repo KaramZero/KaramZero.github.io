@@ -1,1 +1,109 @@
-"[]" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karam Test App</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #notification {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Karam Test App
+    </header>
+
+    <h1>Welcome to the App Opener!</h1>
+
+    <p>Enter Recipe ID:</p>
+    <!-- Input field for the recipeId -->
+    <input type="number" id="recipeIdInput" placeholder="Recipe ID" min="1">
+
+    <p>Click the button below to open the Android app with extra data:</p>
+
+    <!-- Button to open Android app with extra data -->
+    <button onclick="openAndroidApp()">Open Android App</button>
+
+    <!-- Notification message -->
+    <p id="notification"></p>
+
+    <script>
+        function openAndroidApp() {
+            // Replace 'yourapp' with the actual custom URI scheme of the Android app
+            const customUriScheme = 'https://www.karamzero.github.io.com/details';
+
+            // Get the value from the input field or set it to 1 if empty
+            const recipeId = document.getElementById('recipeIdInput').value || '1';
+
+            // Extra data to be passed in the URI
+            const extraData = {
+                recipeId: recipeId
+                // Add more key-value pairs as needed
+            };
+
+            // Convert extraData to a URL-encoded string
+            const params = new URLSearchParams(extraData).toString();
+
+            // Construct the intent URI with extra data
+            const intentURI = `intent://${customUriScheme}/#Intent;${params};end`;
+
+            // Attempt to open the app
+            window.location.href = intentURI;
+
+            // Notify the user
+            const notificationElement = document.getElementById('notification');
+            notificationElement.textContent = "Checking if the app can handle the intent...";
+        }
+    </script>
+
+</body>
+</html>
