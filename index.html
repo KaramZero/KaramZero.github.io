@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karam Test App</title>
-
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
     <style>
         body {
             background-color: #f0f0f0;
@@ -63,7 +59,7 @@
 <body>
 
     <header>
-        ::: Karam Test App :::
+        :: Karam Test App ::
     </header>
 
     <h1>Welcome to the App Opener!</h1>
@@ -80,12 +76,9 @@
     <!-- Notification message -->
     <p id="notification"></p>
 
-    <!-- Materialize JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <script>
         function openAndroidApp() {
-            // Replace 'yourapp' with the actual custom URI scheme of the Android app
+            // Replace 'https://www.karamzero.github.io.com/details' with the actual custom URI scheme of the Android app
             const customUriScheme = 'https://www.karamzero.github.io.com/details';
 
             // Get the value from the input field or set it to 1 if empty
@@ -103,20 +96,17 @@
             // Construct the intent URI with extra data
             const intentURI = `intent://${customUriScheme}/#Intent;${params};end`;
 
-            // Attempt to open the app
-            window.location.href = intentURI;
-
-            // Notify the user
+            // Show the full intent text for 10 seconds
             const notificationElement = document.getElementById('notification');
-            notificationElement.textContent = "Checking if the app can handle the intent...";
-
-            // Show a Snackbar message for 10 seconds
-            showSnackbar("Intent sent. Checking for app response...", 10000);
-        }
-
-        function showSnackbar(message, duration) {
-            // Using Materialize CSS Snackbar
-            M.toast({ html: message, displayLength: duration });
+            notificationElement.textContent = `Intent: ${intentURI}`;
+            
+            // After 10 seconds, attempt to open the app
+            setTimeout(() => {
+                // Attempt to open the app
+                window.location.href = intentURI;
+                // Notify the user
+                notificationElement.textContent = "Checking if the app can handle the intent...";
+            }, 10000); // 10000 milliseconds = 10 seconds
         }
     </script>
 
