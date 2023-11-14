@@ -89,9 +89,9 @@
     <script>
         // Declare global constants
         const host = 'karamzero.github.io';
-        const path = '/details';
+        const path = '/detail';
         const scheme = 'https';
-        const package_name = 'com.example.recipesapp';
+        const package_name = 'com.example.mycashplayground';
 
          /**
          * Function to open the Android app using a URL pattern.
@@ -102,7 +102,8 @@
          */
         function openAndroidAppUrlPattern() {
             const recipeId = document.getElementById('recipeIdInput').value || '1';
-            const urlToOpen = `${scheme}://${host}${path}?recipeId=${recipeId}`;
+            const params = new URLSearchParams({ recipeId }).toString();    
+            const urlToOpen = `${scheme}://${host}${path}?${params}`;
             window.location.href = urlToOpen;
             document.getElementById('notification').textContent = "Checking if the app can handle the URL...";
         }
