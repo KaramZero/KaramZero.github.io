@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karam Test App</title>
+    
     <style>
         body {
             background-color: #f0f0f0;
@@ -54,58 +55,71 @@
             margin-top: 10px;
             color: #4CAF50;
         }
+        
+        button.secondary {
+            background-color: #3498db;
+        }
+
+        button.secondary:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        ::: Karam Test App :::
+        :: Karam Test App ::
     </header>
 
     <h1>Welcome to the App Opener!</h1>
 
     <p>Enter Recipe ID:</p>
-    <!-- Input field for the recipeId -->
     <input type="number" id="recipeIdInput" placeholder="Recipe ID" min="1">
 
-    <p>Click the button below to open the Android app with extra data:</p>
+       <!-- Button to open the Android app using URL pattern -->
+    <p>Click the button below to open the Android app with extra data using URL pattern:</p>
+    <button onclick="openAndroidAppUrlPattern()">Open Android App using URL patter</button>
 
-    <!-- Button to open Android app with extra data -->
-    <button onclick="openAndroidApp()">Open Android App</button>
+        <!-- Button to open the Android app using the example 'intent' scheme -->
+    <p>Or, click the button below to attempt opening the URL using the example `intent` scheme:</p>
+    <button class="secondary" onclick="openAndroidAppWithIntentScheme()">Open Android App with Intent Scheme</button>
 
-    <!-- Notification message -->
     <p id="notification"></p>
 
     <script>
-        function openAndroidApp() {
-            // Replace 'https://karamzero.github.io/details' with the actual URL you want to open
-            const urlToOpen = 'https://karamzero.github.io/details';
+        // Declare global constants
+        const host = 'karamzero.github.io';
+        const path = '/details';
+        const scheme = 'https';
+        const package_name = 'com.example.recipesapp';
 
-            // Get the value from the input field or set it to 1 if empty
+         /**
+         * Function to open the Android app using a URL pattern.
+         * It constructs a URL with extra data (recipeId) and attempts to open it.
+         * This approach is a standard way of opening a link on the web.
+         * When the user clicks the button, the webpage opens in the default browser, and if the app is configured to handle this URL pattern, 
+         * it might prompt the user to open the app
+         */
+        function openAndroidAppUrlPattern() {
             const recipeId = document.getElementById('recipeIdInput').value || '1';
+            const urlToOpen = `${scheme}://${host}${path}?recipeId=${recipeId}`;
+            window.location.href = urlToOpen;
+            document.getElementById('notification').textContent = "Checking if the app can handle the URL...";
+        }
 
-            // Extra data to be passed in the URL
-            const extraData = {
-                recipeId: recipeId
-                // Add more key-value pairs as needed
-            };
-
-            // Convert extraData to a URL-encoded string
-            const params = new URLSearchParams(extraData).toString();
-
-            // Construct the URL with extra data
-            const urlWithParams = `${urlToOpen}?${params}`;
-            
-            // Attempt to open the URL
-           // window.location.href = urlWithParams;
-            
-            const hrefIntent="intent://karamzero.github.io/detail?recipeId=12#Intent;scheme=https;package=com.example.mycashplayground;end";
-            window.location.href = hrefIntent;
-
-
-            // Notify the user
-            const notificationElement = document.getElementById('notification');
-            notificationElement.textContent = "Checking if the app can handle the URL...";
+         /**
+         * Function to attempt opening the URL using the example 'intent' scheme.
+         * It constructs a URL with extra data (recipeId) and attempts to open it using the 'intent' scheme.
+         * The 'intent' scheme is designed for communication between Android apps. 
+         * When the user clicks the button, the Android system checks if an app is registered to handle the 'intent' scheme with the specified package name and opens the app directly.
+         * This method provides a more direct and seamless transition between the web and the app.
+         */
+        function openAndroidAppWithIntentScheme() {
+            const recipeId = document.getElementById('recipeIdInput').value || '1';
+            const params = new URLSearchParams({ recipeId }).toString();
+            const intentSchemeUrl = `intent://${host}${path}?${params}#Intent;scheme=${scheme};package=${package_name};end`;
+            window.location.href = intentSchemeUrl;
+            document.getElementById('notification').textContent = "Checking if the app can handle the URL with Intent scheme...";
         }
     </script>
 
