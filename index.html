@@ -8,8 +8,8 @@
     
     <style>
         body {
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #282c35;
+            color: #fff;
             font-family: 'Arial', sans-serif;
             text-align: center;
             margin: 0;
@@ -38,6 +38,8 @@
             font-size: 16px;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -48,6 +50,10 @@
             padding: 10px;
             margin: 10px;
             font-size: 16px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
         }
 
         #notification {
@@ -76,18 +82,18 @@
     <p>Enter Recipe ID:</p>
     <input type="number" id="recipeIdInput" placeholder="Recipe ID" min="1">
 
-       <!-- Button to open the Android app using URL pattern -->
+    <!-- Button to open the Android app using URL pattern -->
     <p>Click the button below to open the Android app with extra data using URL pattern:</p>
-    <button onclick="openAndroidAppUrlPattern()">Open Android App using URL patter</button>
+    <button onclick="openAndroidAppUrlPattern()">Open Android App using URL pattern</button>
 
-        <!-- Button to open the Android app using the example 'intent' scheme -->
+    <!-- Button to open the Android app using the example 'intent' scheme -->
     <p>Or, click the button below to attempt opening the URL using the example `intent` scheme:</p>
     <button class="secondary" onclick="openAndroidAppWithIntentScheme()">Open Android App with Intent Scheme</button>
 
     <p id="notification"></p>
 
     <script>
-        // Declare global constants
+         // Declare global constants
         const host = 'karamzero.github.io';
         const path = '/details';
         const scheme = 'https';
