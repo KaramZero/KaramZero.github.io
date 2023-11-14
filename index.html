@@ -59,7 +59,7 @@
 <body>
 
     <header>
-        :: Karam Test App ::
+        ::: Karam Test App :::
     </header>
 
     <h1>Welcome to the App Opener!</h1>
@@ -95,9 +95,13 @@
 
             // Construct the URL with extra data
             const urlWithParams = `${urlToOpen}?${params}`;
-
+            
             // Attempt to open the URL
-            window.location.href = urlWithParams;
+           // window.location.href = urlWithParams;
+            
+            const hrefIntent="intent://karamzero.github.io/details?recipeId=12#Intent;scheme=http;package=com.example.recipesapp;end";
+            window.location.href = hrefIntent;
+
 
             // Notify the user
             const notificationElement = document.getElementById('notification');
