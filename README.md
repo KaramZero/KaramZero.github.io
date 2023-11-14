@@ -50,7 +50,7 @@ Before implementing these methods, ensure that
 
 - Receiving Incoming Data in Android Activity:
 ```kotlin
-      val action: String? = intent?.action
+        val action: String? = intent?.action
         val data: Uri? = intent?.data
 
         //check if the activity was started with intent data or started normally without intent data
