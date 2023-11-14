@@ -2,6 +2,12 @@
 
 This web page serves as a testing and demonstration platform for opening an Android app with extra data using two different methods: URL Pattern and Intent Scheme.
 
+
+## Preview the Site
+
+To preview the functionality of the web page, visit [Karam Test App](https://karamzero.github.io).  
+
+
 ## Methods Overview
 
 ### 1. Open Android App using URL Pattern
