@@ -64,7 +64,7 @@ Before implementing these methods, ensure that
             //get a query parameter value by its exact name, in this case "recipeId".
             //if the query parameter name exists, it will return its value, otherwise it will return null.
             //and perform a safe call using let to avoid null pointer exception.
-            data.getQueryParameter("recipeIdd")?.let {recipeId ->
+            data.getQueryParameter("recipeId")?.let {recipeId ->
                 Log.d("Intent.ACTION_VIEW", "the activity was started with intent data $recipeId")
             }
 
