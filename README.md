@@ -50,13 +50,25 @@ Before implementing these methods, ensure that
 
 - Receiving Incoming Data in Android Activity:
 ```kotlin
-val action: String? = intent?.action
-val data: Uri? = intent?.data
+      val action: String? = intent?.action
+        val data: Uri? = intent?.data
 
-if (Intent.ACTION_VIEW == action && data != null) {
-    val recipeId = data.getQueryParameter("recipeId")
-    Log.d("Intent.ACTION_VIEW", "The activity was started with intent data: $recipeId")
-} else {
-    Log.d("Intent.ACTION_VIEW", "The activity was started normally without intent data")
-}
+        //check if the activity was started with intent data or started normally without intent data
+        if (Intent.ACTION_VIEW == action && data != null) {
+            //get the url path segments as a set of strings
+            val segments =  data.pathSegments.toString()
+
+            //get the queries parameters names as a set of strings
+            val queries = data.queryParameterNames
+
+            //get a query parameter value by its exact name, in this case "recipeId".
+            //if the query parameter name exists, it will return its value, otherwise it will return null.
+            //and perform a safe call using let to avoid null pointer exception.
+            data.getQueryParameter("recipeIdd")?.let {recipeId ->
+                Log.d("Intent.ACTION_VIEW", "the activity was started with intent data $recipeId")
+            }
+
+        } else {
+            Log.d("Intent.ACTION_VIEW", "the activity was started normally without intent data")
+        }
 ```
