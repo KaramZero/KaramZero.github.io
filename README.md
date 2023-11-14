@@ -28,7 +28,8 @@ To preview the functionality of the web page, visit [Karam Test App](https://kar
 
 ## Prerequisites
 
-Before implementing these methods, ensure that your Android app's activity, responsible for handling the intent, includes the following intent filter:
+Before implementing these methods, ensure that
+- Includes the following intent filter in your Android app's activity, responsible for handling the intent:
 
 ```xml
 <intent-filter android:autoVerify="true">
@@ -45,4 +46,17 @@ Before implementing these methods, ensure that your Android app's activity, resp
     <!-- Add more schemes, hosts, and paths as needed -->
 
 </intent-filter>
+```
 
+- Receiving Incoming Data in Android Activity:
+```kotlin
+val action: String? = intent?.action
+val data: Uri? = intent?.data
+
+if (Intent.ACTION_VIEW == action && data != null) {
+    val recipeId = data.getQueryParameter("recipeId")
+    Log.d("Intent.ACTION_VIEW", "The activity was started with intent data: $recipeId")
+} else {
+    Log.d("Intent.ACTION_VIEW", "The activity was started normally without intent data")
+}
+```
